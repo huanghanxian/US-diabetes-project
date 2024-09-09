@@ -1,0 +1,28 @@
+---
+title: "Class2lab"
+output: html_document
+date: "2024-09-09"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+
+diabetes <- read_csv("https://raw.githubusercontent.com/huanghanxian/US-diabetes-project/main/DiabetesAtlasData.csv",skip=2,col_types = cols(
+  County_FIPS = col_character(),
+  County = col_character(),
+  State = col_character(),
+  `Diagnosed Diabetes-2021-Percentage` = col_double(),
+  `Overall SVI-2018-Percentile` = col_double()
+), na = 'No Data')
+
+
+```
+
+```{r}
+diabetes_sorted <- diabetes[order(diabetes$`Diagnosed Diabetes-2021-Percentage`,decreasing =T),]
+diabetes_sorted[1,]
+```
+
